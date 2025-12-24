@@ -1,0 +1,5 @@
+{
+  "name": "TanyaPintar - Platform Tanya Jawab Digital",
+  "description": "Platform tanya jawab tingkat lanjut dengan dasbor admin yang aman, ditenagai oleh Firebase dan AI Gemini untuk analisis respons cerdas.",
+  "requestFramePermissions": []
+}
