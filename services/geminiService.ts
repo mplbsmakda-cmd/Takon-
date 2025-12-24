@@ -29,6 +29,21 @@ export const suggestQuestions = async (topic: string) => {
   }
 };
 
+export const getQuickPulse = async (submissions: any[]) => {
+  if (submissions.length === 0) return "Menunggu data masuk...";
+  const recent = submissions.slice(0, 10).map(s => JSON.stringify(s.answers)).join(" | ");
+  
+  const response = await ai.models.generateContent({
+    model: "gemini-3-flash-preview",
+    contents: `Berdasarkan data jawaban mentah ini, berikan 1 kalimat sangat pendek (maks 15 kata) yang merangkum "mood" atau "inti utama" aspirasi mereka.
+    Data: ${recent}`,
+    config: {
+      systemInstruction: "Anda adalah analis ekspres. Berikan kalimat yang provokatif tapi profesional dalam Bahasa Indonesia."
+    }
+  });
+  return response.text || "Data stabil.";
+};
+
 export const analyzeSentiment = async (submissions: any[]) => {
   if (submissions.length === 0) return "Belum ada data untuk dianalisis.";
   

@@ -2,9 +2,11 @@
 export interface Question {
   id: string;
   text: string;
-  type: 'text' | 'rating'; // Tambahan tipe pertanyaan
+  type: 'text' | 'rating';
   active: boolean;
   createdAt: number;
+  targetType: 'global' | 'specific';
+  targetClasses?: string[]; 
 }
 
 export interface Class {
@@ -21,7 +23,9 @@ export interface Submission {
 }
 
 export interface AppConfig {
-  eventTitle: string;
-  eventDescription: string;
-  themeColor: string;
+  title: string;
+  desc: string;
+  isOpen: boolean;
+  brandColor: string;
+  logoUrl?: string;
 }
